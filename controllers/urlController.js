@@ -14,7 +14,10 @@ exports.saveUrl = async (req, res, next) => {
     }).catch(err => {
         return console.log('URL  already exists in database')
     })
-    res.json(urlDoc);
+    res.json({
+        'original_url': urlDoc.original_url,
+        'short_url': urlDoc.short_url
+    });
 }
 
 // Retrieve and go to original URL => /api/shorturl/:shortUrl
